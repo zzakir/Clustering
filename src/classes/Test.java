@@ -21,7 +21,9 @@ public class Test
 		Scanner sc = new Scanner(System.in);
 		String path = sc.next(); 
 		System.out.println("Enter number of clusters : ");
-		int no_of_clusters = sc.nextInt();		
+		int no_of_clusters = sc.nextInt();
+		System.out.println("Enter path to create the clusteres data files : ");		
+		String dest_path = sc.next();
 		DataSet ds = new DataSet(new File(path),"  ",12);
 		sc.close();
 		ArrayList<String> data = ds.loadData();		
@@ -29,16 +31,23 @@ public class Test
 		KMedoid km = new KMedoid(no_of_clusters,data);
 		ArrayList<ArrayList<String>> output = km.cluster();
 		
-		File dir = new File("E:/Clusters/");
+		File dir = new File(dest_path);
 
-		for(File file: dir.listFiles()) file.delete(); 
+		if(dir.exists())
+		{
+			for(File file: dir.listFiles()) file.delete();
+		}			
+		else
+		{
+			dir.mkdir();
+		}
 		
 		for(int i=0;i<output.size();i++)
 		{
 			ArrayList<String> cluster =  output.get(i);
 			try
 			{				
-				File f = new File("E:/Clusters/Cluster"+(i+1)+".data");
+				File f = new File(dest_path+"/Cluster"+(i+1)+".data");
 				f.createNewFile();
 				FileOutputStream is = new FileOutputStream(f);
 		        OutputStreamWriter osw = new OutputStreamWriter(is);    

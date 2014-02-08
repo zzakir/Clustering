@@ -1,0 +1,6 @@
+- K-medoid algorithm for clustering uncertain data using KL-Divergence as probability distribution similarity is implemented in this project.
+- The IEEE paper based on which this project has been implemented is added as IEEE_paper.pdf in the 'src' folder.
+- A sample dataset WalesRainfall.data to test the algorithm is also added in the 'src' folder.
+- To test the algorithm, run the Test.java file and enter the path of the dataset,number of clusters required and the path where the clustered datasets must be created.
+- The algorithm is described in the section 4.1.2 in IEEE_paper.pdf
+- Equations from the sections 3.3. and 3.1 in the paper have also been used in this project.
